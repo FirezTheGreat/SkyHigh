@@ -15,7 +15,7 @@ module.exports = class ready extends Event {
 			data.push({ name: key, description: value.description, options: value.commandOptions });
 		};
 		
-		await this.bot.guilds.cache.first().commands.set(data);
+		await this.bot.application.commands.set(data);
 		console.log(`${this.bot.user.username} is Online!`);
 	};
 };
