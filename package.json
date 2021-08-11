@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "canvas": "^2.8.0",
-    "discord.js": "^13.0.0",
+    "discord.js": "^13.0.1",
     "glob": "^7.1.7",
     "mongoose": "^5.13.4"
   },
