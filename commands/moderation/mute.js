@@ -38,6 +38,8 @@ module.exports = class Mute extends Command {
             let muterole = interaction.guild.roles.cache.find(role => role.name.toLowerCase() === 'muted');
             const userRoles = muteMember.roles.cache.filter(role => !role.managed && role.id !== interaction.guild.id).map(role => role.id);
 
+            await interaction.deferReply();
+
             if (!muterole) {
                 try {
                     muterole = await interaction.guild.roles.create({
@@ -103,7 +105,7 @@ module.exports = class Mute extends Command {
                 ${time !== 0 ? `\n\`Time\` - ${formatTime(time)}` : ''}${`\n\`Reason\` - ${reason}`}**`)
                 .setFooter(this.bot.user.username, this.bot.user.displayAvatarURL())
                 .setTimestamp();
-            interaction.reply({ embeds: [confirmEmbed] });
+            interaction.editReply({ embeds: [confirmEmbed] });
 
             if (time > 0) {
                 setTimeout(async () => {
