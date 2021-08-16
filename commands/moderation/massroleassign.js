@@ -31,11 +31,11 @@ module.exports = class MassRoleAssign extends Command {
 
             await interaction.deferReply();
 
-            interaction.guild.members.cache.forEach((member) => {
-                    if (member.roles.cache.has(role.id) || member.user.bot || member.roles.highest.comparePositionTo(interaction.guild.me.roles.highest) >= 0) return;
+            for (const member of interaction.guild.members.cache) {
+                if (member.roles.cache.has(role.id) || member.user.bot || member.roles.highest.comparePositionTo(interaction.guild.me.roles.highest) >= 0) return;
                     member.roles.add(role.id).catch(() => null);
                     index++
-            });
+            };
 
             if (index === 0) return interaction.editReply(`**Everyone Already Has ${role} Assigned To Them!**`);
             const confirmEmbed = new MessageEmbed()
