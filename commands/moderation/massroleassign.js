@@ -44,7 +44,7 @@ module.exports = class MassRoleAssign extends Command {
                 .setDescription(`**${role} Has Been Added To Everyone**`)
                 .setFooter(this.bot.user.username, this.bot.user.displayAvatarURL())
                 .setTimestamp();
-            console.log('newDone')
+
             return await interaction.editReply({ embeds: [confirmEmbed] });
         } catch (error) {
             console.error(error);
