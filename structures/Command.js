@@ -8,6 +8,7 @@ module.exports = class Command {
         this.usage = options.usage;
         this.accessableby = options.accessableby || 'Everyone';
 		this.slashCommand = options.slashCommand || false;
+		this.buttonCommands = options.buttonCommands || [];
 		this.commandOptions = options.commandOptions || [];
 	};
 

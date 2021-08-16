@@ -144,7 +144,7 @@ module.exports = class Mute extends Command {
                         .setFooter(`Prisoner Bulletin`, muteMember.user.displayAvatarURL({ dynamic: true }))
                         .setTimestamp();
 
-                    const logEmbedChannel = interaction.guild.channels.cache.get('854624553803841536');
+                    const logEmbedChannel = interaction.guild.channels.cache.get('875934553800343612');
                     if (logEmbedChannel) return logEmbedChannel.send({ embeds: [logEmbed] });
                 }, time);
             };
@@ -162,7 +162,7 @@ module.exports = class Mute extends Command {
                 .setFooter(`Prisoner Bulletin`, muteMember.user.displayAvatarURL({ dynamic: true }))
                 .setTimestamp();
 
-            const logEmbedChannel = interaction.guild.channels.cache.get('854624553803841536');
+            const logEmbedChannel = interaction.guild.channels.cache.get('875934553800343612');
             if (logEmbedChannel) return logEmbedChannel.send({ embeds: [logEmbed] });
         } catch (error) {
             console.error(error);

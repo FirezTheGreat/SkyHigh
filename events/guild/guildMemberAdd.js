@@ -2,14 +2,14 @@ const Event = require('../../structures/Event');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
 
-module.exports = class messageCreate extends Event {
+module.exports = class guildMemberAdd extends Event {
     constructor(...args) {
 		super(...args);
 	};
 
 	async run(member) {
 		try {
-			const channel = member.guild.channels.cache.get('873090368902676552');
+			const channel = member.guild.channels.cache.get('875932911516397598');
             if (!channel) return;
 
             registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Rubik.ttf'), { family: 'Rubik' });

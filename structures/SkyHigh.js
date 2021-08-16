@@ -4,7 +4,6 @@ const Util = require('./Util');
 module.exports = class SkyHigh extends Client {
     constructor(options = {}) {
         super({
-            fetchAllMembers: true,
             partials: ['MESSAGE', 'REACTION'],
             presence: {
                 status: 'online',

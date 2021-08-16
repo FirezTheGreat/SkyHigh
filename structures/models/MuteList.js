@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const MyAFKSchema = new Schema({
+const MyMuteListSchema = new Schema({
     ID: {
         type: String,
         required: true,
@@ -31,4 +31,4 @@ const MyAFKSchema = new Schema({
     }
 });
 
-module.exports = model('MuteList', MyAFKSchema, 'MuteList');
+module.exports = model('MuteList', MyMuteListSchema, 'MuteList');
