@@ -13,7 +13,7 @@ module.exports = {
             connectTimeoutMS: 10000
         };
 
-        connect('mongodb+srv://firez:skyhigh@sky-high.s6amn.mongodb.net/skyhigh?authSource=admin&replicaSet=atlas-tbixx0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true', dbOptions);
+        connect('', dbOptions);
         Promise = global.Promise;
 
         connection.on('connected', () => {
