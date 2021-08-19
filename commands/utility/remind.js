@@ -299,7 +299,7 @@ module.exports = class Remind extends Command {
                         let newReminder = await RemindList.findOne({ ID: generatedID });
 
                         if (!newReminder || newReminder.timeInMS - Date.now() > 0) return;
-                        await dailyReminder(newReminder);
+                        await dailyReminder(interaction, newReminder, this.bot);
 
                         if (newReminder.daily) {
                             let parsedTimeForTomorrow = new Date(newReminder.timeInMS);
@@ -443,7 +443,7 @@ module.exports = class Remind extends Command {
     };
 };
 
-async function dailyReminder(reminder, bot) {
+async function dailyReminder(interaction, reminder, bot) {
     const reminderEmbed = new MessageEmbed()
         .setAuthor(interaction.user.username, interaction.user.displayAvatarURL({ dynamic: true }))
         .setColor('GREEN')
