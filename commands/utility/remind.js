@@ -280,6 +280,7 @@ module.exports = class Remind extends Command {
                     const reminder = await RemindList.create({
                         ID: generatedID,
                         UserID: interaction.member.id,
+                        GuildID: interaction.guild.id,
                         time: parsedTime.toString(),
                         timeInMS: parsedTime.getTime(),
                         reason: reasonReminder,

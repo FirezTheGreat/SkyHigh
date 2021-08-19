@@ -18,14 +18,14 @@ module.exports = class Ready extends Event {
 				data.push({ name: key, description: value.description, options: value.commandOptions });
 			};
 
-			await this.bot.guilds.cache.first().commands.set(data)
+			await this.bot.application.commands.set(data);
 			console.log(`${this.bot.user.username} is Online!`);
 
-			const guild = await this.bot.guilds.fetch('690106176502759430');
-			const members = await guild.members.fetch();
 			const totalReminders = await RemindList.find({});
 
 			for (let i = 0; i < totalReminders.length; i++) {
+                const members = await this.bot.guilds.cache.get(totalReminders[i].GuildID).members.fetch();
+
 				let reminderInterval = setInterval(async () => {
 					let newReminder = await RemindList.findOne({ ID: totalReminders[i].ID });
 

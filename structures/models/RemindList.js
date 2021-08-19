@@ -12,6 +12,10 @@ const MyRemindListSchema = new Schema({
         type: String,
         required: true,
     },
+    GuildID: {
+        type: String,
+        required: true
+    },
     time: {
         type: String,
         required: true,
