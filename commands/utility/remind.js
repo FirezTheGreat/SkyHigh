@@ -440,15 +440,15 @@ module.exports = class Remind extends Command {
             console.error(error);
             return interaction.reply(`An Error Occurred: \`${error.message}\`!`);
         };
-
-        let dailyReminder = async (reminder) => {
-            const reminderEmbed = new MessageEmbed()
-                .setAuthor(interaction.user.username, interaction.user.displayAvatarURL({ dynamic: true }))
-                .setColor('GREEN')
-                .addField(`**Reminder Of ${reminder.time.slice(0, -30).trim()}**`, reminder.reason)
-                .setTimestamp();
-            reminder.daily ? reminderEmbed.setFooter('Your Daily Reminder By SkyHigh Bot', this.bot.user.displayAvatarURL({ dynamic: true })) : null;
-            return interaction.user.send({ embeds: [reminderEmbed] }).catch(async () => await RemindList.deleteOne({ ID: generatedID }));
-        };
     };
+};
+
+async function dailyReminder(reminder, bot) {
+    const reminderEmbed = new MessageEmbed()
+        .setAuthor(interaction.user.username, interaction.user.displayAvatarURL({ dynamic: true }))
+        .setColor('GREEN')
+        .addField(`**Reminder Of ${reminder.time.slice(0, -30).trim()}**`, reminder.reason)
+        .setTimestamp();
+    reminder.daily ? reminderEmbed.setFooter('Your Daily Reminder By SkyHigh Bot', bot.user.displayAvatarURL({ dynamic: true })) : null;
+    return interaction.user.send({ embeds: [reminderEmbed] }).catch(async () => await RemindList.deleteOne({ ID: generatedID }));
 };
