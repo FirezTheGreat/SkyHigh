@@ -63,7 +63,7 @@ module.exports = class Mute extends Command {
                 };
             };
 
-            if (muteMember.roles.cache.has(muterole.id)) return interaction.reply("**User Is Already Muted!**");
+            if (muteMember.roles.cache.has(muterole.id)) return interaction.editReply("**User Is Already Muted!**");
             
             let mutedMemberFetched = await MuteList.findOne({ ID: muteMember.user.id });
 
@@ -94,7 +94,7 @@ module.exports = class Mute extends Command {
                     .setTimestamp();
                 muteMember.send({ embeds: [muteEmbed] }).catch(() => null);
             }).catch(() => {
-                return interaction.reply(`Couldn't Mute ${muteMember}`);
+                return interaction.editReply(`Couldn't Mute ${muteMember}`);
             });
 
             const confirmEmbed = new MessageEmbed()
