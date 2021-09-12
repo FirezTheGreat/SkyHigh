@@ -64,7 +64,7 @@ module.exports = class Mute extends Command {
             };
 
             if (muteMember.roles.cache.has(muterole.id)) return interaction.editReply("**User Is Already Muted!**");
-            
+
             let mutedMemberFetched = await MuteList.findOne({ ID: muteMember.user.id });
 
             if (!mutedMemberFetched) {

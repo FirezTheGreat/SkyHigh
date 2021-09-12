@@ -45,8 +45,10 @@ module.exports = class Embed extends Command {
                 .setColor(color.toUpperCase())
                 .setTimestamp();
 
-            if (collector.first().content) embed.setAuthor(interaction.guild.name, interaction.guild.iconURL({ dynamic: true }))
-            if (collector.first().content) embed.setDescription(collector.first().content);
+            if (collector.first().content) {
+                embed.setAuthor(interaction.guild.name, interaction.guild.iconURL({ dynamic: true }))
+                embed.setDescription(collector.first().content);
+            };
             if (collector.first().attachments.size !== 0) embed.setImage(collector.first().attachments.first().url);
 
             interaction.followUp(`**Embed Sent In ${channel}**`);
