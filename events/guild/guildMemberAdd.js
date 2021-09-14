@@ -1,15 +1,23 @@
 const Event = require('../../structures/Event');
+const MuteList = require('../../structures/models/MuteList');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 const path = require('path');
 
 module.exports = class guildMemberAdd extends Event {
     constructor(...args) {
-		super(...args);
-	};
+        super(...args);
+    };
 
-	async run(member) {
-		try {
-			const channel = member.guild.channels.cache.get('875932911516397598');
+    async run(member) {
+        try {
+            let mutedMember = await MuteList.findOne({ ID: member.user.id });
+            if (mutedMember) {
+                let muterole = member.guild.roles.cache.find(role => role.name.toLowerCase() === 'muted');
+                await member.roles.remove(member.roles.cache.filter(role => !role.managed));
+                await member.roles.add(muterole);
+            };
+
+            const channel = member.guild.channels.cache.get('875932911516397598');
             if (!channel) return;
 
             registerFont(path.join(__dirname, '..', '..', 'assets', 'fonts', 'Rubik.ttf'), { family: 'Rubik' });
@@ -45,10 +53,10 @@ module.exports = class guildMemberAdd extends Event {
             ctx.drawImage(avatar, 25, 25, 200, 200);
 
             return channel.send({ files: [{ attachment: canvas.toBuffer(), name: 'welcome.png' }] });
-		} catch (error) {
-			console.error(error);
-		};
-	};
+        } catch (error) {
+            console.error(error);
+        };
+    };
 };
 
 function applyText(canvas, text) {

@@ -64,7 +64,7 @@ module.exports = class Mute extends Command {
             };
 
             if (muteMember.roles.cache.has(muterole.id)) return interaction.editReply("**User Is Already Muted!**");
-
+            
             let mutedMemberFetched = await MuteList.findOne({ ID: muteMember.user.id });
 
             if (!mutedMemberFetched) {
@@ -131,7 +131,7 @@ module.exports = class Mute extends Command {
                             };
                             await MuteList.deleteOne({ ID: muteMember.user.id });
                         };
-                    });
+                    }).catch(() => null);
 
                     const logEmbed = new MessageEmbed()
                         .setAuthor(interaction.guild.name, interaction.guild.iconURL({ dynamic: true }))
