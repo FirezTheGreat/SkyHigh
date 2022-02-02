@@ -56,7 +56,7 @@ module.exports = class Remind extends Command {
                                 name: 'daily', type: 'STRING', description: 'Remind Daily', required: false, choices:
                                     [
                                         { name: 'yes', value: 'true' },
-                                        { name: 'no', value: 'true' }
+                                        { name: 'no', value: 'false' }
                                     ]
                             }
                         ]
